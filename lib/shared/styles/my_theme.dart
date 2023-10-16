@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
@@ -32,7 +33,8 @@ class MyThemeData {
       selectedItemColor: MyColors.primaryColor,
       unselectedItemColor: MyColors.bottomNavUnselectedItem,
       showUnselectedLabels: false,
-      type: BottomNavigationBarType.shifting,
+      showSelectedLabels: false,
+      type: BottomNavigationBarType.fixed,
     ),
   );
 
@@ -65,7 +67,8 @@ class MyThemeData {
       selectedItemColor: MyColors.primaryColor,
       unselectedItemColor: MyColors.bottomNavUnselectedItem,
       showUnselectedLabels: false,
-      type: BottomNavigationBarType.shifting,
+      showSelectedLabels: false,
+      type: BottomNavigationBarType.fixed,
     ),
   );
 }
