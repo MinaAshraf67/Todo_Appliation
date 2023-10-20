@@ -7,6 +7,6 @@ class MyColors {
   static Color backgroundLight = const Color(0xffdfecdb);
   static Color backgroundDark = const Color(0xff060e1e);
   static Color onbackgroundDark = const Color(0xff141922);
-  static Color bottomNavUnselectedItem = const Color(0xFFC8C9CB);
+  static Color unselectedItem = const Color(0xFFC8C9CB);
   static Color transparentColor = Colors.transparent;
 }

@@ -21,8 +21,8 @@ class TaskItem extends StatelessWidget {
             child: Row(
               children: [
                 Container(
-                  height: 80.0,
-                  width: 4.0,
+                  height: 80.0.h,
+                  width: 4.0.w,
                   decoration: BoxDecoration(
                       color: MyColors.primaryColor,
                       borderRadius: BorderRadius.circular(30.0)),
@@ -36,7 +36,7 @@ class TaskItem extends StatelessWidget {
                   children: [
                     Text('Task Title',
                         style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                            fontSize: 14.0, fontWeight: FontWeight.bold)),
+                            fontSize: 14.0.sp, fontWeight: FontWeight.bold)),
                     SizedBox(
                       height: 5.0.h,
                     ),
@@ -44,7 +44,7 @@ class TaskItem extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .labelSmall!
-                            .copyWith(fontSize: 14.0)),
+                            .copyWith(fontSize: 14.0.sp)),
                   ],
                 ),
                 const Spacer(),

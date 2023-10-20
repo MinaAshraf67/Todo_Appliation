@@ -19,6 +19,7 @@ class TasksTab extends StatelessWidget {
             Container(
               color: MyColors.primaryColor,
               width: double.infinity,
+              margin: const EdgeInsets.only(bottom: 20.0),
               height: 157.h,
               child: Container(
                 margin: const EdgeInsets.only(left: 52.0, top: 31.0),
@@ -32,9 +33,8 @@ class TasksTab extends StatelessWidget {
                 ),
               ),
             ),
-            Card(
-              elevation: 5.0,
-              color: MyColors.whiteColor,
+            Container(
+              color: Colors.white,
               child: CalendarTimeline(
                 showYears: false,
                 initialDate: DateTime.now(),
