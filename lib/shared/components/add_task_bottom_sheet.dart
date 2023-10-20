@@ -1,6 +1,7 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
 class AddTaskBottomSheet extends StatefulWidget {
@@ -141,7 +142,7 @@ class _AddTaskBottomSheetState extends State<AddTaskBottomSheet> {
       initialDate: selectedDate,
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(
-        Duration(
+        const Duration(
           days: 365,
         ),
       ),
