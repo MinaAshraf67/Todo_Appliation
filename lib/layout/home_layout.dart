@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/providers/home_layout_provider.dart';
 import 'package:todo_app/screens/settings/settings_tab.dart';
 import 'package:todo_app/screens/tasks/tasks_tab.dart';
-import 'package:todo_app/shared/components/add_task_bottom_sheet.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
 class HomeLayout extends StatelessWidget {
@@ -35,7 +34,7 @@ class HomeLayout extends StatelessWidget {
                   side: BorderSide(color: Colors.white, width: 4.0),
                 ),
                 onPressed: () {
-                  showSheet(context);
+                  provider.showSheet(context);
                 },
                 child: const Icon(
                   Icons.add,
@@ -67,26 +66,6 @@ class HomeLayout extends StatelessWidget {
               body: tabs[provider.index],
             ),
           ),
-        );
-      },
-    );
-  }
-
-  void showSheet(context) {
-    showModalBottomSheet(
-      isScrollControlled: true,
-      elevation: 10.0,
-      showDragHandle: true,
-      useSafeArea: true,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      context: context,
-      builder: (context) {
-        return Padding(
-          padding:
-              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-          child: AddTaskBottomSheet(),
         );
       },
     );

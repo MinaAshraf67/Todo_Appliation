@@ -14,7 +14,7 @@ class TasksTab extends StatelessWidget {
     return Column(
       children: [
         Stack(
-          alignment: const AlignmentDirectional(0, 2.0),
+          alignment: const AlignmentDirectional(0, 1.5),
           children: [
             Container(
               color: MyColors.primaryColor,
@@ -64,7 +64,7 @@ class TasksTab extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             itemBuilder: (context, index) {
-              return TaskItem();
+              return const TaskItem();
             },
             itemCount: 5,
           ),
