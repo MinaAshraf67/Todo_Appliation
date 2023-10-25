@@ -1,9 +1,11 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/providers/tasks_provider.dart';
+import 'package:todo_app/shared/firebase/firebase_functions.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
 class AddTaskBottomSheet extends StatelessWidget {
@@ -113,10 +115,21 @@ class AddTaskBottomSheet extends StatelessWidget {
                 height: 16.0.h,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  TaskModel taskModel = TaskModel(
+                    title: provider.titleController.text,
+                    description: provider.descriptionController.text,
+                    date: DateUtils.dateOnly(provider.selectedDate)
+                        .millisecondsSinceEpoch,
+                  );
+                  FirebaseFunctions.addTasktoFireStore(taskModel).then((value) {
+                    Navigator.pop(context);
+                  });
+                },
                 color: MyColors.primaryColor,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
                 minWidth: double.infinity,
                 height: 42.0.h,
                 child: Text(

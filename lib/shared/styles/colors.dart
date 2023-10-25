@@ -9,4 +9,6 @@ class MyColors {
   static Color onbackgroundDark = const Color(0xff141922);
   static Color unselectedItem = const Color(0xFFC8C9CB);
   static Color transparentColor = Colors.transparent;
+  static Color errorColor = const Color.fromARGB(255, 255, 255, 255);
+  static Color greenColor = const Color(0xFF61E757);
 }

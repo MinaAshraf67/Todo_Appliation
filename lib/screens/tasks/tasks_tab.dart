@@ -3,12 +3,20 @@
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/screens/tasks/task_item.dart';
+import 'package:todo_app/shared/firebase/firebase_functions.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
-class TasksTab extends StatelessWidget {
+class TasksTab extends StatefulWidget {
   const TasksTab({super.key});
 
+  @override
+  State<TasksTab> createState() => _TasksTabState();
+}
+
+class _TasksTabState extends State<TasksTab> {
+  DateTime selectedDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,14 +45,18 @@ class TasksTab extends StatelessWidget {
               color: Colors.white,
               child: CalendarTimeline(
                 showYears: false,
-                initialDate: DateTime.now(),
+                initialDate: selectedDate,
                 firstDate: DateTime.now().subtract(
                   const Duration(days: 365),
                 ),
                 lastDate: DateTime.now().add(
                   const Duration(days: 365),
                 ),
-                onDateSelected: (date) => print(date),
+                onDateSelected: (date) {
+                  setState(() {
+                    selectedDate = date;
+                  });
+                },
                 leftMargin: 15,
                 monthColor: Colors.blueGrey,
                 dayColor: MyColors.blackColor,
@@ -61,14 +73,61 @@ class TasksTab extends StatelessWidget {
         SizedBox(
           height: 64.0.h,
         ),
-        Expanded(
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              return const TaskItem();
-            },
-            itemCount: 5,
-          ),
+
+        // For real-time changes
+        StreamBuilder(
+          stream: FirebaseFunctions.getTasks(selectedDate),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasError) {
+              return const Center(
+                child: Text("Something went wrong"),
+              );
+            }
+            List<TaskModel> tasks =
+                snapshot.data?.docs.map((e) => e.data()).toList() ?? [];
+            return Expanded(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return TaskItem(
+                    task: tasks[index],
+                  );
+                },
+                itemCount: tasks.length,
+              ),
+            );
+          },
         ),
+
+        //For one-time read
+
+        // FutureBuilder(
+        //   future: FirebaseFunctions.getTasks(selectedDate),
+        //   builder: (context, snapshot) {
+        //     if (snapshot.connectionState == ConnectionState.waiting) {
+        //       return const Center(child: CircularProgressIndicator());
+        //     }
+        //     if (snapshot.hasError) {
+        //       return const Center(
+        //         child: Text("Something went wrong"),
+        //       );
+        //     }
+        //     List<TaskModel> tasks =
+        //         snapshot.data?.docs.map((e) => e.data()).toList() ?? [];
+        //     return Expanded(
+        //       child: ListView.builder(
+        //         itemBuilder: (context, index) {
+        //           return TaskItem(
+        //             task: tasks[index],
+        //           );
+        //         },
+        //         itemCount: tasks.length,
+        //       ),
+        //     );
+        //   },
+        // )
       ],
     );
   }

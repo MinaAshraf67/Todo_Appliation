@@ -30,8 +30,8 @@ class HomeLayout extends StatelessWidget {
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerDocked,
               floatingActionButton: FloatingActionButton(
-                shape:  CircleBorder(
-                  side: BorderSide(color:   MyColors.whiteColor, width: 4.0),
+                shape: CircleBorder(
+                  side: BorderSide(color: MyColors.whiteColor, width: 4.0),
                 ),
                 onPressed: () {
                   provider.showSheet(context);

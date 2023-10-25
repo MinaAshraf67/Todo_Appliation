@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/shared/components/add_task_bottom_sheet.dart';
+import 'package:todo_app/screens/tasks/add_task_bottom_sheet.dart';
 
 class HomeLayoutProvider extends ChangeNotifier {
   int index = 0;
@@ -11,9 +11,9 @@ class HomeLayoutProvider extends ChangeNotifier {
   void showSheet(context) {
     showModalBottomSheet(
       isScrollControlled: true,
+      isDismissible: true,
       elevation: 10.0,
       showDragHandle: true,
-      useSafeArea: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
       ),
