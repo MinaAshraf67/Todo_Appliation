@@ -5,19 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_app/models/task_model.dart';
+import 'package:todo_app/screens/tasks/task_update.dart';
 import 'package:todo_app/shared/firebase/firebase_functions.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
-class TaskItem extends StatefulWidget {
+class TaskItem extends StatelessWidget {
+  TaskItem({required this.task, super.key});
   TaskModel task;
 
-  TaskItem({required this.task, super.key});
-
-  @override
-  State<TaskItem> createState() => _TaskItemState();
-}
-
-class _TaskItemState extends State<TaskItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,7 +29,7 @@ class _TaskItemState extends State<TaskItem> {
               children: [
                 SlidableAction(
                   onPressed: (context) {
-                    FirebaseFunctions.deleteTask(widget.task.id);
+                    FirebaseFunctions.deleteTask(task.id);
                   },
                   label: 'Delete',
                   icon: Icons.delete,
@@ -45,7 +40,13 @@ class _TaskItemState extends State<TaskItem> {
                   ),
                 ),
                 SlidableAction(
-                  onPressed: (context) {},
+                  onPressed: (context) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TaskUpdate(task: task),
+                        ));
+                  },
                   label: 'Edit',
                   icon: Icons.edit,
                   backgroundColor: Colors.blue,
@@ -71,7 +72,7 @@ class _TaskItemState extends State<TaskItem> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        widget.task.title,
+                        task.title,
                         style: Theme.of(context).textTheme.labelSmall!.copyWith(
                               fontSize: 14.0.sp,
                               fontWeight: FontWeight.bold,
@@ -81,7 +82,7 @@ class _TaskItemState extends State<TaskItem> {
                         height: 5.0.h,
                       ),
                       Text(
-                        widget.task.description,
+                        task.description,
                         style: Theme.of(context)
                             .textTheme
                             .labelSmall!
@@ -90,7 +91,7 @@ class _TaskItemState extends State<TaskItem> {
                     ],
                   ),
                   const Spacer(),
-                  widget.task.isDone
+                  task.isDone
                       ? SizedBox(
                           height: 35.0.h,
                           width: 70.w,
@@ -114,9 +115,8 @@ class _TaskItemState extends State<TaskItem> {
                                 color: MyColors.primaryColor,
                               )),
                           onPressed: () {
-                            widget.task.isDone = true;
-                            FirebaseFunctions.updateTask(widget.task);
-                            setState(() {});
+                            task.isDone = true;
+                            FirebaseFunctions.updateTask(task);
                           },
                           child: SvgPicture.asset('assets/images/doneIcon.svg'),
                         ),

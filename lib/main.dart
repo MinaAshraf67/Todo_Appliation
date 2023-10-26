@@ -5,11 +5,12 @@ import 'package:todo_app/firebase_options.dart';
 import 'package:todo_app/layout/home_layout.dart';
 import 'package:todo_app/shared/styles/my_theme.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
+
   runApp(const MyApp());
 }
 

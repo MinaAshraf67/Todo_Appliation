@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/providers/tasks_provider.dart';
+import 'package:todo_app/shared/components/custom_text_field.dart';
 import 'package:todo_app/shared/firebase/firebase_functions.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
@@ -32,56 +33,16 @@ class AddTaskBottomSheet extends StatelessWidget {
               SizedBox(
                 height: 16.0.h,
               ),
-              TextFormField(
+              CustomTextField(
+                label: 'Task Title',
                 controller: provider.titleController,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  label: Text(
-                    'Task Title',
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    borderSide: BorderSide(
-                      color: MyColors.unselectedItem,
-                      width: 2.0,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    borderSide: BorderSide(
-                      color: MyColors.primaryColor,
-                      width: 2.0,
-                    ),
-                  ),
-                ),
               ),
               SizedBox(
                 height: 16.0.h,
               ),
-              TextFormField(
+              CustomTextField(
+                label: 'Task Description',
                 controller: provider.descriptionController,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  label: Text(
-                    'Task Description',
-                    style: Theme.of(context).textTheme.labelSmall,
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    borderSide: BorderSide(
-                      color: MyColors.unselectedItem,
-                      width: 2.0,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                    borderSide: BorderSide(
-                      color: MyColors.primaryColor,
-                      width: 2.0,
-                    ),
-                  ),
-                ),
               ),
               SizedBox(
                 height: 16.0.h,
