@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:todo_app/models/task_model.dart';
-import 'package:todo_app/screens/tasks/task_update.dart';
+import 'package:todo_app/screens/tasks/task_update/task_update.dart';
 import 'package:todo_app/shared/firebase/firebase_functions.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 

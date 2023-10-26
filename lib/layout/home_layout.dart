@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/providers/home_layout_provider.dart';
 import 'package:todo_app/screens/settings/settings_tab.dart';
-import 'package:todo_app/screens/tasks/tasks_tab.dart';
+import 'package:todo_app/screens/tasks/tasks_tab/tasks_tab.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
 class HomeLayout extends StatelessWidget {

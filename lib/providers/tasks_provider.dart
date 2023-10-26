@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/task_model.dart';
+import 'package:todo_app/shared/firebase/firebase_functions.dart';
 
 class TasksProvider extends ChangeNotifier {
   var titleController = TextEditingController();
@@ -24,6 +26,12 @@ class TasksProvider extends ChangeNotifier {
 
     selectedDate = chosenDate;
 
+    notifyListeners();
+  }
+
+  addingTaskBottomSheet(BuildContext context, TaskModel taskModel) {
+    FirebaseFunctions.addTasktoFireStore(taskModel);
+    Navigator.pop(context);
     notifyListeners();
   }
 }

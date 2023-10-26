@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:todo_app/models/task_model.dart';
 import 'package:todo_app/providers/tasks_provider.dart';
 import 'package:todo_app/shared/components/custom_text_field.dart';
-import 'package:todo_app/shared/firebase/firebase_functions.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
 class AddTaskBottomSheet extends StatelessWidget {
@@ -83,9 +82,7 @@ class AddTaskBottomSheet extends StatelessWidget {
                     date: DateUtils.dateOnly(provider.selectedDate)
                         .millisecondsSinceEpoch,
                   );
-                  FirebaseFunctions.addTasktoFireStore(taskModel).then((value) {
-                    Navigator.pop(context);
-                  });
+                  provider.addingTaskBottomSheet(context, taskModel);
                 },
                 color: MyColors.primaryColor,
                 shape: RoundedRectangleBorder(

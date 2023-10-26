@@ -4,7 +4,7 @@ import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:todo_app/models/task_model.dart';
-import 'package:todo_app/screens/tasks/task_item.dart';
+import 'package:todo_app/screens/tasks/task_item/task_item.dart';
 import 'package:todo_app/shared/firebase/firebase_functions.dart';
 import 'package:todo_app/shared/styles/colors.dart';
 
