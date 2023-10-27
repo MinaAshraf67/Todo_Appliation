@@ -4,17 +4,17 @@ import 'package:todo_app/shared/styles/colors.dart';
 
 class AppTextStyleLightTheme {
   static final TextStyle bodySmall = GoogleFonts.poppins(
-    fontSize: 20.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.normal,
     color: MyColors.blackColor,
   );
   static final TextStyle bodyMedium = GoogleFonts.poppins(
-    fontSize: 25.0,
+    fontSize: 16.0,
     fontWeight: FontWeight.normal,
     color: MyColors.blackColor,
   );
   static final TextStyle bodyLarage = GoogleFonts.poppins(
-    fontSize: 30.0,
+    fontSize: 20.0,
     fontWeight: FontWeight.bold,
     color: MyColors.blackColor,
   );
@@ -27,17 +27,17 @@ class AppTextStyleLightTheme {
 
 class AppTextStyleDarkTheme {
   static final TextStyle bodySmall = GoogleFonts.poppins(
-    fontSize: 20.0,
+    fontSize: 14.0,
     fontWeight: FontWeight.normal,
     color: MyColors.whiteColor,
   );
   static final TextStyle bodyMedium = GoogleFonts.poppins(
-    fontSize: 25.0,
+    fontSize: 16.0,
     fontWeight: FontWeight.normal,
     color: MyColors.whiteColor,
   );
   static final TextStyle bodyLarage = GoogleFonts.poppins(
-    fontSize: 30.0,
+    fontSize: 20.0,
     fontWeight: FontWeight.bold,
     color: MyColors.whiteColor,
   );

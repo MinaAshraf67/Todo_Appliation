@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/models/user_model.dart';
 import 'package:todo_app/providers/home_layout_provider.dart';
 import 'package:todo_app/screens/settings/settings_tab.dart';
 import 'package:todo_app/screens/tasks/tasks_tab/tasks_tab.dart';
@@ -21,12 +22,16 @@ class HomeLayout extends StatelessWidget {
       create: (context) => HomeLayoutProvider(),
       builder: (context, child) {
         var provider = Provider.of<HomeLayoutProvider>(context);
-
+        var user = ModalRoute.of(context)?.settings.arguments as UserModel;
         return Container(
           color: MyColors.primaryColor,
           child: SafeArea(
             child: Scaffold(
               extendBody: true,
+              appBar: AppBar(
+                elevation: 0.0,
+                title: Text("ToDO ${user.name}"),
+              ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerDocked,
               floatingActionButton: FloatingActionButton(
