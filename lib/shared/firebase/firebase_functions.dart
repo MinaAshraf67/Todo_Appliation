@@ -106,7 +106,7 @@ class FirebaseFunctions {
         var user = await readUserFromFirestore(credential.user!.uid);
         onSuccess(user);
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException {
       onError("Wrong Email or Password");
 
       // if (e.code == 'user-not-found') {

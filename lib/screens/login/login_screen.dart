@@ -13,7 +13,7 @@ class LoginScreen extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text("Login"),
+          title: const Text("Login"),
           bottom: const TabBar(
             tabs: [
               Tab(

@@ -101,7 +101,7 @@ class SignUpTab extends StatelessWidget {
                         context: context,
                         barrierDismissible: false,
                         builder: (context) => AlertDialog(
-                          title: Text(
+                          title: const Text(
                             'Something went wrong',
                           ),
                           content: Text(errorMessage),
@@ -110,7 +110,7 @@ class SignUpTab extends StatelessWidget {
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              child: Text(
+                              child: const Text(
                                 "Ok",
                               ),
                             )
